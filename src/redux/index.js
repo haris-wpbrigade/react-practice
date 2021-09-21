@@ -1,14 +1,17 @@
-import {createStore, applyMiddleware, combineReducers} from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunkMiddleware from "redux-thunk";
-import counterReducer from "./reducers/counterReducer";
+import todoReducers from "./reducers/todoreducers";
 
 const rootReducers = combineReducers({
-    counterReducer
+  todoReducers,
 });
 
-const middlewares = [thunkMiddleware]
+const middlewares = [thunkMiddleware];
 
-const Store = createStore(rootReducers, composeWithDevTools(applyMiddleware(...middlewares)));
+const Store = createStore(
+  rootReducers,
+  composeWithDevTools(applyMiddleware(...middlewares))
+);
 
 export default Store;

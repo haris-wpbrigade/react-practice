@@ -1,22 +1,19 @@
-import './App.css';
-import {useDispatch, useSelector} from "react-redux";
-import {INCREMENT, DECREAMENT} from "./redux/constants";
+import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo, deleteTodo, clearTodo } from "./redux/actions";
 
 function App() {
   const dispatch = useDispatch();
-  const {counter} = useSelector(state => state.counterReducer);
-  const increamentf = () => {
-    dispatch({type:INCREMENT})
-  }
+  const todolist = useSelector((state) => state.todoReducers.todolist);
 
-  const deacrementf = () => {
-    dispatch({type:DECREAMENT})
-  }
   return (
     <div className="App">
-      <h1>{counter}</h1>
-      <button onClick={increamentf}>+</button>
-      <button onClick={deacrementf}>-</button>
+      <h1>Add your todo Items</h1>
+
+      <form className="form-wrapper">
+        <input type="text" placeholder="Type your task" />
+        <button type="submit">+</button>
+      </form>
     </div>
   );
 }
