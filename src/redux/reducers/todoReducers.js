@@ -2,6 +2,7 @@ import { ADD_TODO, REMOVE_TODO, CLEAR_TODO } from "../actionTypes";
 
 const initState = {
   todoList: [],
+  doneList: [],
 };
 
 const todoReducers = (state = initState, action) => {
@@ -21,14 +22,23 @@ const todoReducers = (state = initState, action) => {
       };
     case REMOVE_TODO:
       const newlist = state.todoList.filter((elem) => elem.id !== action.id);
+      const Donelist = state.todoList.filter((elem) => elem.id === action.id)
       return {
         ...state,
         todoList: newlist,
+        doneList: [
+          ...state.doneList, 
+          {
+            id: Donelist[0].id,
+            content: Donelist[0].content
+          }
+        ],
       };
     case CLEAR_TODO:
       return {
         ...state,
         todoList: [],
+        doneList: []
       };
     default:
       return state;
