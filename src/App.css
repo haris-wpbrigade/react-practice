@@ -53,6 +53,20 @@
   outline: none;
 }
 
+.tasks-counter{
+  display: flex;
+} 
+.tasks-count{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+} 
+
+.tasks-count span{
+  padding: 10px 20px;
+}
+
 .custom-dropdown {
   position: relative;
   display: inline-block;
@@ -151,4 +165,10 @@
 .CTA-btn:focus {
   background: transparent;
   outline: none;
+}
+
+@media (max-width: 767px) {
+  .tasks-count{
+    flex-direction: column;
+  }
 }
